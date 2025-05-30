@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Noite da Escolha</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff4f4;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background: #ff6b81;
+      color: white;
+      padding: 20px 0;
+    }
+    main {
+      padding: 20px;
+    }
+    img.prato-img {
+      max-width: 90%;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+    .prato {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .prato label {
+      display: block;
+      margin: 10px 0;
+      font-size: 18px;
+    }
+    button {
+      background: #ff6b81;
+      border: none;
+      padding: 15px 30px;
+      color: white;
+      font-size: 18px;
+      margin-top: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: #ffeaea;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bem-vinda à Noite da Escolha ❤️</h1>
+    <p>Escolha o(s) prato(s) que quiser, meu amor</p>
+  </header>
+  <main>
+    <img class="prato-img" src="https://i.imgur.com/W3GLDkK.jpg" alt="Foto do casal" />
+    <form id="pedidoForm">
+      <div class="prato">
+        <h2>Pratos principais</h2>
+        <img class="prato-img" src="https://i.imgur.com/rVNcYZ3.jpg" alt="Frango do Coração" />
+        <label><input type="checkbox" name="prato" value="Frango do Coração"> Frango do Coração</label>
+
+        <img class="prato-img" src="https://i.imgur.com/kVgN6n2.jpg" alt="Paixão de Costela" />
+        <label><input type="checkbox" name="prato" value="Paixão de Costela"> Paixão de Costela</label>
+
+        <img class="prato-img" src="https://i.imgur.com/WlGVjbt.jpg" alt="Macarrão da Saudade" />
+        <label><input type="checkbox" name="prato" value="Macarrão da Saudade"> Macarrão da Saudade</label>
+
+        <img class="prato-img" src="https://i.imgur.com/OvjE5FF.jpg" alt="Medalhão ao Amor" />
+        <label><input type="checkbox" name="prato" value="Medalhão ao Amor"> Medalhão ao Amor</label>
+
+        <img class="prato-img" src="https://i.imgur.com/ARV1Yk7.jpg" alt="Purê do Amor com Charme de Carne" />
+        <label><input type="checkbox" name="prato" value="Purê do Amor com Charme de Carne"> Purê do Amor com Charme de Carne</label>
+      </div>
+
+      <div class="prato">
+        <h2>Sobremesa</h2>
+        <img class="prato-img" src="https://i.imgur.com/7HytPO3.jpg" alt="Doce Surpresa" />
+        <label><input type="checkbox" name="sobremesa" value="Doce Surpresa"> Doce Surpresa</label>
+      </div>
+
+      <div class="prato">
+        <h2>Bebidas</h2>
+        <img class="prato-img" src="https://i.imgur.com/xKn3AF8.jpg" alt="Bebidas" />
+        <label><input type="checkbox" name="bebida" value="Vinho"> Vinho 🍷</label>
+        <label><input type="checkbox" name="bebida" value="Coca-Cola Zero"> Coca-Cola Zero 🥤</label>
+      </div>
+
+      <button type="button" onclick="enviarPedido()">Quero esse para nosso jantar ❤️</button>
+    </form>
+  </main>
+
+  <footer>
+    Garotas Não Merecem Chorar - Luan Santana ♪
+  </footer>
+
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3" />
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    function enviarPedido() {
+      const pratos = [...document.querySelectorAll('input[name="prato"]:checked')].map(el => el.value);
+      const sobremesas = [...document.querySelectorAll('input[name="sobremesa"]:checked')].map(el => el.value);
+      const bebidas = [...document.querySelectorAll('input[name="bebida"]:checked')].map(el => el.value);
+      let mensagem = "Oi amor, quero:\\n";
+
+      if (pratos.length > 0) mensagem += "🍽️ Pratos: " + pratos.join(", ") + "\\n";
+      if (sobremesas.length > 0) mensagem += "🍰 Sobremesa: " + sobremesas.join(", ") + "\\n";
+      if (bebidas.length > 0) mensagem += "🥤 Bebidas: " + bebidas.join(", ") + "\\n";
+
+      const tel = "27997984742";
+      const url = `https://wa.me/55${tel}?text=${encodeURIComponent(mensagem)}`;
+      window.location.href = url;
+    }
+  </script>
+</body>
+</html>
